@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_package = "com.example.service1";
+option java_outer_classname = "ResponseProto";
+
+package com.example.service1;
+import "google/protobuf/any.proto";
+
+message ErrorMessage {
+    string status = 1;
+    string message = 2;
+    string code = 3;
+}
+
+message ErrorMessages {
+    repeated ErrorMessage errorMessage = 4;
+}
+
+message ResponseParams {
+    string responseId = 1;
+    string messageId = 2;
+    string responseMessageId = 3;
+    string sourceId = 4;
+    string deviceId = 5;
+    string channel = 6;
+    int32 status = 7;
+    string message = 8;
+    int32 code = 9;
+    ErrorMessages errorMessages = 10;
+}
+
+message Response {
+    string id = 1;
+    string version = 2;
+    string timestamp = 3;
+    string operation = 4;
+    string type = 5;
+    ResponseParams responseParams = 6;
+    map<string, google.protobuf.Any> response = 7;
+    map<string, google.protobuf.Any> metadata = 8;
+}
