@@ -23,10 +23,11 @@ message ResponseParams {
     string sourceId = 4;
     string deviceId = 5;
     string channel = 6;
-    int32 status = 7;
-    string message = 8;
-    int32 code = 9;
-    ErrorMessages errorMessages = 10;
+    int32 responseStatus = 7;
+    string status = 8;
+    string message = 9;
+    string code = 10;
+    ErrorMessages errorMessages = 11;
 }
 
 message Response {
@@ -36,6 +37,6 @@ message Response {
     string operation = 4;
     string type = 5;
     ResponseParams responseParams = 6;
-    map<string, google.protobuf.Any> response = 7;
-    map<string, google.protobuf.Any> metadata = 8;
+    map<string, google.protobuf.Any> responseMap = 7;
+    map<string, google.protobuf.Any> metadataMap = 8;
 }
