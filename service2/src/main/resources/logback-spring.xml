@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <springProperty scope="context" name="LOG_PATH" source="log.path" defaultValue="/log/grpc-demo"/>
+    <springProperty scope="context" name="LOG_PATH" source="log.path" defaultValue="/log/grpc-demo/feture-two/"/>
 
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
