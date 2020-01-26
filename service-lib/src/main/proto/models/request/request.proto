@@ -1,30 +1,26 @@
 syntax = "proto3";
 
-option java_package = "com.example.services.models.request";
+option java_package = "com.example.service1";
 option java_outer_classname = "RequestProto";
 
-package com.example.services.models;
+package com.example.service1;
 import "google/protobuf/any.proto";
-import "models/channel/channel.proto";
-import "models/service/service.proto";
-import "models/operation/operation.proto";
 
 message RequestParams {
     string requestId = 1;
     string messageId = 2;
     string sourceId = 3;
     string deviceId = 4;
-    ChannelInfo channelInfo = 5;
-    ServiceInfo serviceInfo = 6;
+    string channel = 5;
 }
 
 message Request {
     string id = 1;
     string version = 2;
     string timestamp = 3;
-    Operation operation = 4;
+    string operation = 4;
     string type = 5;
     RequestParams requestParams = 6;
     map<string, google.protobuf.Any> request = 7;
-    map<string, google.protobuf.Any> metaData = 8;
+    map<string, google.protobuf.Any> metadata = 8;
 }

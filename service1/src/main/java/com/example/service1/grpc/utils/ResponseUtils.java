@@ -1,16 +1,21 @@
 package com.example.service1.grpc.utils;
 
-import com.example.service1.RequestProto;
 import com.example.service1.ResponseProto;
+import com.example.services.model.channel.ChannelProto;
+import com.example.services.models.request.RequestProto;
+import com.example.services.models.service.ServiceProto;
 import com.google.protobuf.Any;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.MapUtils;
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class ResponseUtils {
+
+    private static final Logger log = LoggerFactory.getLogger(ResponseUtils.class);
 
     private static final String DEFAULT_SUCCESS_MESSAGE = "Successfully processed";
     private static final String DEFAULT_FAILURE_MESSAGE = "Failure while processing";
@@ -28,11 +33,11 @@ public class ResponseUtils {
         return builtResponse;
     }
 
-    public static ResponseProto.Response formAndGetResponse(RequestProto.Request request, String message, Integer responseStatus, String status, String code, ResponseProto.ErrorMessages errorMessages) {
+    public static ResponseProto.Response formAndGetResponse(RequestProto.Request request, String message, Integer responseCode, String status, String code, ResponseProto.ErrorMessages errorMessages) {
         return ResponseProto.Response.newBuilder()
                 .setId("")
                 .setVersion(request.getVersion())
-                .setTimestamp(System.currentTimeMillis() + "")
+                .setTimestamp(System.currentTimeMillis() + " ")
                 .setOperation(request.getOperation())
                 .setType(request.getType())
                 .setResponseParams(
@@ -42,12 +47,10 @@ public class ResponseUtils {
                                 .setResponseMessageId(UUID.randomUUID().toString())
                                 .setSourceId(request.getRequestParams().getSourceId())
                                 .setDeviceId(request.getRequestParams().getDeviceId())
-                                .setChannel(request.getRequestParams().getChannel())
-                                .setResponseStatus(responseStatus)
-                                .setStatus(status)
-                                .setMessage(message)
-                                .setCode(code)
-                                .setErrorMessages(errorMessages)
+                                .setChannelInfo(ChannelProto.ChannelInfo.newBuilder().build())
+                                .setServiceInfo(ServiceProto.ServiceInfo.newBuilder().build())
+                                .setResponseStatus(ResponseProto.ResponseStatus.newBuilder().build())
+                                .setResponseCode(responseCode)
                                 .build())
             .build();
     }

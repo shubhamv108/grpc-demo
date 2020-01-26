@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.example.services.models.service";
+option java_outer_classname = "ServiceProto";
+
+package com.example.services.models;
+
+message ServiceInfo {
+    string originServiceId = 1;
+    string previousServiceId = 2;
+    string serviceId = 3;
+    string nextServiceId = 4;
+    repeated string serviceRoute = 5;
+}

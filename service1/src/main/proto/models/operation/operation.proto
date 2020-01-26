@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.example.services.models.enums.operation";
+option java_outer_classname = "OpearationProto";
+
+package com.example.services.models;
+
+enum Operation {
+    ASK = 0;
+    CALL = 1;
+    CREATE = 2;
+    DELETE = 3;
+    DOWNLOAD = 4;
+    READ = 5;
+    STREAM = 6;
+    SUBSCRIBE = 7;
+    TELL = 8;
+    TRANSACT = 9;
+    UPDATE = 10;
+    UPLOAD = 11;
+}

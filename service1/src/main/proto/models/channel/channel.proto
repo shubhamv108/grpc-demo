@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "com.example.services.model.channel";
+option java_outer_classname = "ChannelProto";
+
+package com.example.services.models;
+
+message ChannelInfo {
+    ChannelId originChannel = 1;
+    ChannelId channel = 2;
+    ChannelId endChannel = 3;
+    repeated ChannelId channelRoute = 4;
+}
+
+enum ChannelId {
+    CLIENT = 0;
+    PRIVATE = 1;
+    TEST = 2;
+}

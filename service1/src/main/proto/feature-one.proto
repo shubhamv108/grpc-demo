@@ -1,11 +1,9 @@
 syntax = "proto3";
 
-option java_package = "com.example.service1";
+option java_package = "com.example.services.models.featureOne";
 option java_outer_classname = "FeatureOneProto";
 
-package com.example.service1;
-import "google/protobuf/any.proto";
-import "google/protobuf/empty.proto";
+package com.example.services.models.featureone;
 import "models/request/request.proto";
 import "models/response/response.proto";
 
